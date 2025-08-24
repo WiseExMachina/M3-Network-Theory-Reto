@@ -60,3 +60,8 @@ Para ejecutar este análisis, sigue estos pasos:
     ```bash
     python3 grafo.py
     ```
+
+
+## Documentos adicionales en la era de la IA.
+
+    Adicionalmente, este repositorio incluye el archivo prompts.md que sirve como un registro detallado de las interacciones con el modelo de IA que me asistió en cada fase del proyecto. Este documento fue generado utilizando NotebookLM, lo cual no solo documenta el proceso de resolución, sino que también refleja una práctica de trabajo transparente y un flujo de pensamiento guiado. 
