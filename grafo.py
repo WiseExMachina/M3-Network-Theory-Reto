@@ -108,7 +108,7 @@ else:
 
 
 # --------------------------------------------------
-## SECCIÓN DE DIBUJO DEL GRAFO (DESACTIVADA TEMPORALMENTE)
+## SECCIÓN DE DIBUJO DEL GRAFO
 # --------------------------------------------------
 
 # Generar las posiciones de los nodos

@@ -1,0 +1,14 @@
+# If your folder is named 'my_graph_project' on your Desktop
+cd "/Users/oo/M3 Network Theory"
+python3 -m venv graph_env
+source graph_env/bin/activate
+pip install networkx numpy matplotlib
+pip install scipy
+python3 grafo.py
+git config --global user.name "Bernardo Lozano Wise"
+git config --global user.email "bernardolw@gmail.com"
+git add grafo.py
+git commit -m "Añadir distancias v2 jaja"
+git add grafo.py
+git commit -m "added requirements.txt"
+pip freeze > requirements.txt
