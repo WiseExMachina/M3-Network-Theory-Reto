@@ -2,7 +2,7 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Your matrix, defined as a list of lists
+# Matriz de adyacencias como una lista de listas
 adj_matrix_list = [
     [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
@@ -16,19 +16,57 @@ adj_matrix_list = [
     [0, 0, 0, 0, 0, 0, 0, 1, 1, 0]
 ]
 
-# --- FIX IS HERE ---
-# 1. Convert your list into a proper NumPy array
+# Convertir la lista a un array de NumPy
 adj_matrix = np.array(adj_matrix_list)
 
-# 2. Create a graph using the correctly named variable
+# Crear un grafo a partir de la matriz
 G = nx.from_numpy_array(adj_matrix)
-# --- END FIX ---
+
+# --------------------------------------------------
+## ANÁLISIS DE LA RED
+# --------------------------------------------------
+
+# 1. Calcular el grado de cada vértice.
+grados_de_vertices = G.degree()
+print("Grado de cada vértice (Nodo, Grado):")
+print(list(grados_de_vertices))
+
+# 2. Escribir la secuencia de grados.
+secuencia_de_grados = sorted([d for n, d in grados_de_vertices], reverse=True)
+print("\nSecuencia de grados (ordenada de mayor a menor):")
+print(secuencia_de_grados)
+
+# 3. Encontrar el diámetro de la red.
+# El diámetro solo está definido para grafos conectados.
+if nx.is_connected(G):
+    diametro = nx.diameter(G)
+    print(f"\nLa red está conectada.")
+    print(f"El diámetro de la red es: {diametro}")
+else:
+    print("\nLa red no está conectada, por lo que no se puede calcular un único diámetro.")
 
 
-# 3. Draw the graph
-plt.figure(figsize=(8, 8)) # Made the figure a bit bigger for clarity
-nx.draw(G, with_labels=True, node_color='skyblue', node_size=1000, font_size=16, width=2, edge_color='gray', pos=nx.kamada_kawai_layout(G))
+# --------------------------------------------------
+## SECCIÓN DE DIBUJO DEL GRAFO
+# --------------------------------------------------
 
-# 4. Display the plot
-plt.title("Graph from Adjacency Matrix")
+# Generar las posiciones de los nodos
+pos = nx.kamada_kawai_layout(G)
+
+# Dibujar el grafo
+plt.figure(figsize=(8, 8))
+nx.draw(
+    G,
+    pos,
+    with_labels=True,
+    node_color='skyblue',
+    node_size=1200,
+    font_size=16,
+    width=2,
+    edge_color='gray'
+)
+
+# Guardar y mostrar el grafo
+plt.title("Grafo con Layout Kamada-Kawai")
+plt.savefig("graph_kamada_kawai.png")
 plt.show()
