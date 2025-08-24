@@ -46,22 +46,24 @@ else:
 
 # 4. Calcular y mostrar todas las distancias entre vértices.
 print("\nDistancias entre todos los pares de nodos (caminos más cortos):")
-# Esto genera un diccionario donde cada nodo es una clave
-# y su valor es otro diccionario con las distancias a los demás nodos.
 distancias = dict(nx.all_pairs_shortest_path_length(G))
 for nodo_origen, destinos in distancias.items():
     print(f"  Distancias desde el nodo {nodo_origen}: {destinos}")
 
-    # ... después de calcular 'diametro' y 'distancias' ...
-
 print(f"\nBuscando los pares de nodos que definen el diámetro ({diametro}):")
 for origen, destinos in distancias.items():
     for destino, distancia in destinos.items():
-        # Buscamos la distancia que sea igual al diámetro
-        if distancia == diametro:
-            # Imprimimos solo una vez cada par (ej. 0-7 y no también 7-0)
-            if origen < destino:
-                print(f"  - La distancia entre el nodo {origen} y el nodo {destino} es {diametro}.")
+        if distancia == diametro and origen < destino:
+            print(f"  - La distancia entre el nodo {origen} y el nodo {destino} es {diametro}.")
+
+# 5. Encontrar la distribución de grados de la red.
+print("\nDistribución de grados de la red:")
+# nx.degree_histogram(G) crea una lista donde el índice es el grado y el valor es cuántos nodos tienen ese grado.
+distribucion = nx.degree_histogram(G)
+for grado, numero_de_nodos in enumerate(distribucion):
+    # Imprimimos solo si hay al menos un nodo con ese grado.
+    if numero_de_nodos > 0:
+        print(f"  - Hay {numero_de_nodos} nodo(s) con grado {grado}.")
 
 
 # --------------------------------------------------
