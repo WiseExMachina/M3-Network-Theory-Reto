@@ -37,13 +37,20 @@ print("\nSecuencia de grados (ordenada de mayor a menor):")
 print(secuencia_de_grados)
 
 # 3. Encontrar el diámetro de la red.
-# El diámetro solo está definido para grafos conectados.
 if nx.is_connected(G):
     diametro = nx.diameter(G)
     print(f"\nLa red está conectada.")
     print(f"El diámetro de la red es: {diametro}")
 else:
     print("\nLa red no está conectada, por lo que no se puede calcular un único diámetro.")
+
+# 4. Calcular y mostrar todas las distancias entre vértices.
+print("\nDistancias entre todos los pares de nodos (caminos más cortos):")
+# Esto genera un diccionario donde cada nodo es una clave
+# y su valor es otro diccionario con las distancias a los demás nodos.
+distancias = dict(nx.all_pairs_shortest_path_length(G))
+for nodo_origen, destinos in distancias.items():
+    print(f"  Distancias desde el nodo {nodo_origen}: {destinos}")
 
 
 # --------------------------------------------------
