@@ -88,6 +88,24 @@ elif clustering_7 > clustering_4:
 else:
     print("  -> Los nodos 4 y 7 tienen el mismo coeficiente de agrupamiento.")
 
+    # 7. Calcular la centralidad de intermediación (Betweenness Centrality).
+print("\nCentralidad de Intermediación:")
+# Esto calcula la centralidad para todos los nodos y la guarda en un diccionario.
+centralidad = nx.betweenness_centrality(G)
+
+# Mostramos la de los nodos de interés
+print(f"  - Centralidad del nodo 4: {centralidad[4]:.4f}")
+print(f"  - Centralidad del nodo 7: {centralidad[7]:.4f}")
+
+# Comparamos cuál de los dos tiene más centralidad
+print("\n¿Cuál de los dos tiene más centralidad, el 4 o el 7?")
+if centralidad[4] > centralidad[7]:
+    print("  -> El nodo 4 tiene una mayor centralidad de intermediación.")
+elif centralidad[7] > centralidad[4]:
+    print("  -> El nodo 7 tiene una mayor centralidad de intermediación.")
+else:
+    print("  -> Los nodos 4 y 7 tienen la misma centralidad de intermediación.")
+
 
 # --------------------------------------------------
 ## SECCIÓN DE DIBUJO DEL GRAFO (DESACTIVADA TEMPORALMENTE)
