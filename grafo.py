@@ -52,6 +52,17 @@ distancias = dict(nx.all_pairs_shortest_path_length(G))
 for nodo_origen, destinos in distancias.items():
     print(f"  Distancias desde el nodo {nodo_origen}: {destinos}")
 
+    # ... después de calcular 'diametro' y 'distancias' ...
+
+print(f"\nBuscando los pares de nodos que definen el diámetro ({diametro}):")
+for origen, destinos in distancias.items():
+    for destino, distancia in destinos.items():
+        # Buscamos la distancia que sea igual al diámetro
+        if distancia == diametro:
+            # Imprimimos solo una vez cada par (ej. 0-7 y no también 7-0)
+            if origen < destino:
+                print(f"  - La distancia entre el nodo {origen} y el nodo {destino} es {diametro}.")
+
 
 # --------------------------------------------------
 ## SECCIÓN DE DIBUJO DEL GRAFO
