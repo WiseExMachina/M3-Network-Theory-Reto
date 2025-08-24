@@ -112,22 +112,23 @@ else:
 # --------------------------------------------------
 
 # Generar las posiciones de los nodos
-# pos = nx.kamada_kawai_layout(G)
+pos = nx.kamada_kawai_layout(G)
 
 # Dibujar el grafo
-# plt.figure(figsize=(8, 8))
-# nx.draw(
-#     G,
-#     pos,
-#     with_labels=True,
-#     node_color='skyblue',
-#     node_size=1200,
-#     font_size=16,
-#     width=2,
-#     edge_color='gray'
-# )
+
+plt.figure(figsize=(8, 8))
+nx.draw(
+    G,
+    pos,
+    with_labels=True,
+    node_color='skyblue',
+    node_size=1200,
+    font_size=16,
+    width=2,
+    edge_color='gray'
+)
 
 # Guardar y mostrar el grafo
-# plt.title("Grafo con Layout Kamada-Kawai")
-# plt.savefig("graph_kamada_kawai.png")
-# plt.show()
+plt.title("Grafo con Layout Kamada-Kawai")
+plt.savefig("graph_kamada_kawai.png")
+plt.show()
