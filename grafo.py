@@ -66,27 +66,50 @@ for grado, numero_de_nodos in enumerate(distribucion):
         print(f"  - Hay {numero_de_nodos} nodo(s) con grado {grado}.")
 
 
+
+# 6. Calcular el coeficiente de agrupamiento para nodos de interés.
+print("\nCoeficiente de agrupamiento (Clustering):")
+# Calculamos para el nodo 3 (uno de los más conectados) y los que sugeriste (4 y 7)
+# Los resultados numéricos exactos dependerán de tu matriz de adyacencias.
+clustering_3 = nx.clustering(G, 3)
+clustering_4 = nx.clustering(G, 4)
+clustering_7 = nx.clustering(G, 7)
+
+print(f"  - Coeficiente del nodo 3: {clustering_3:.4f}")
+print(f"  - Coeficiente del nodo 4: {clustering_4:.4f}")
+print(f"  - Coeficiente del nodo 7: {clustering_7:.4f}")
+
+# Comparar los coeficientes de los nodos 4 y 7
+print("\n¿Cuál tiene un coeficiente mayor, el 4 o el 7?")
+if clustering_4 > clustering_7:
+    print("  -> El nodo 4 tiene un coeficiente de agrupamiento mayor.")
+elif clustering_7 > clustering_4:
+    print("  -> El nodo 7 tiene un coeficiente de agrupamiento mayor.")
+else:
+    print("  -> Los nodos 4 y 7 tienen el mismo coeficiente de agrupamiento.")
+
+
 # --------------------------------------------------
-## SECCIÓN DE DIBUJO DEL GRAFO
+## SECCIÓN DE DIBUJO DEL GRAFO (DESACTIVADA TEMPORALMENTE)
 # --------------------------------------------------
 
 # Generar las posiciones de los nodos
-pos = nx.kamada_kawai_layout(G)
+# pos = nx.kamada_kawai_layout(G)
 
 # Dibujar el grafo
-plt.figure(figsize=(8, 8))
-nx.draw(
-    G,
-    pos,
-    with_labels=True,
-    node_color='skyblue',
-    node_size=1200,
-    font_size=16,
-    width=2,
-    edge_color='gray'
-)
+# plt.figure(figsize=(8, 8))
+# nx.draw(
+#     G,
+#     pos,
+#     with_labels=True,
+#     node_color='skyblue',
+#     node_size=1200,
+#     font_size=16,
+#     width=2,
+#     edge_color='gray'
+# )
 
 # Guardar y mostrar el grafo
-plt.title("Grafo con Layout Kamada-Kawai")
-plt.savefig("graph_kamada_kawai.png")
-plt.show()
+# plt.title("Grafo con Layout Kamada-Kawai")
+# plt.savefig("graph_kamada_kawai.png")
+# plt.show()
