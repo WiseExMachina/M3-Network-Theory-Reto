@@ -44,6 +44,10 @@ if nx.is_connected(G):
 else:
     print("\nLa red no está conectada, por lo que no se puede calcular un único diámetro.")
 
+# Encontrar el radio de la red.
+radio = nx.radius(G)
+print(f"El radio de la red es: {radio}")
+
 # 4. Calcular y mostrar todas las distancias entre vértices.
 print("\nDistancias entre todos los pares de nodos (caminos más cortos):")
 distancias = dict(nx.all_pairs_shortest_path_length(G))
